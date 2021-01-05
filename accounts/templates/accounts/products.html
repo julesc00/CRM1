@@ -1,0 +1,39 @@
+{% extends "accounts/base.html" %}
+{% load static %}
+
+{% block content %}
+    {% include "accounts/navbar.html" %}
+    <section>
+        <div class="row">
+            <div class="col s12">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">Products</span>
+                        <divider></divider>
+                    </div>
+                    <div class="card-content">
+                        <table class="striped">
+                            <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Category</th>
+                                <th>Price</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for product in products %}
+                                <tr>
+                                    <td>{{ product.name }}</td>
+                                    <td>{{ product.category }}</td>
+                                    <td>${{ product.price }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% include "accounts/footer.html" %}
+{% endblock %}

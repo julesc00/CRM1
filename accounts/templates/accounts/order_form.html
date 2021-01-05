@@ -1,0 +1,24 @@
+{% extends "accounts/base.html" %}
+{% load static %}
+
+{% block content %}
+    {% include "accounts/navbar.html" %}
+    <div class="row container">
+    <div class="col s6">
+        <div class="card">
+            <div class="card-content">
+                <span class="card-title">
+                    Add a New Order
+                </span>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input class="btn blue" type="submit" value="SAVE">
+                    <a href="{% url 'accounts:index' %}" class="btn btn-block orange darken-4 right">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+    {% include "accounts/footer.html" %}
+{% endblock %}

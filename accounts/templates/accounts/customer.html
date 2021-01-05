@@ -1,0 +1,92 @@
+{% extends "accounts/base.html" %}
+{% load static %}
+
+{% block content %}
+    {% include "accounts/navbar.html" %}
+    <section class=" dashboard blue-grey lighten-5">
+        <!-- Customer, Contact Information and Total Orders card section -->
+        <div class="row">
+            <div class="col s12 m4">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">Customer: {{ customer.name }}</span>
+                        <div class="card-action">
+                            <a href="{% url 'accounts:update-customer' customer.id %}" class="btn btn-block teal">Update Customer</a>
+                            <a style="margin-top: 10px" href="{% url 'accounts:delete-customer' customer.id %}" class="btn btn-block red darken-3">Delete Customer</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m4">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title center-align">Contact Information</span>
+                        <div class="divider"></div>
+                        <p style="font-size: 1.2em">Email: {{ customer.email }}</p>
+                        <p style="font-size: 1.2em">Phone: {{ customer.phone }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m4">
+                <div class="card teal lighten-4">
+                    <div class="card-content">
+                        <span class="card-title center-align">Total Orders</span>
+                        <div class="divider"></div>
+                        <h2 class="center-align">{{ total_orders }}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Search section -->
+        <div class="row">
+            <div class="col s12">
+                <div class="card searchbar">
+                    <div class="card-content">
+                        <form action="">
+                            {% csrf_token %}
+                            <button>Search</button>
+                            <div class="input-field">
+                                <input type="search" id="search" required>
+                                <label for="search" class="label-icon"><i class="material-icons">search</i></label>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Details section -->
+        <div class="row">
+            <div class="col s12">
+                <div class="card">
+                    <div class="card-content">
+                        <table class="striped responsive-table">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Category</th>
+                                    <th>Date Ordered</th>
+                                    <th>Status</th>
+                                    <th>Update</th>
+                                    <th>Remove</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for order in orders %}
+                                <tr>
+                                    <td>{{ order.product }}</td>
+                                    <td>{{ order.product.category }}</td>
+                                    <td>{{ order.date_created }}</td>
+                                    <td>{{ order.status }}</td>
+                                    <td><a href="#" class="btn btn-block orange darken-1">Update</a></td>
+                                    <td><a href="#" class="btn btn-block red darken-4">Remove</a></td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% include "accounts/footer.html" %}
+{% endblock %}

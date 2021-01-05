@@ -1,0 +1,87 @@
+{% extends "accounts/base.html" %}
+{% load static %}
+
+{% block content %}
+    <section class="dashboard blue-grey lighten-5">
+        <!-- Status Section -->
+        {% include "accounts/status.html" %}
+
+        <div class="row">
+            <!-- Customers -->
+            <div class="col s12 m5">
+                <h4>Customers</h4>
+                <hr class="hr-style-two">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="col s12">
+                            <a href="{% url 'accounts:create-customer' %}" class="btn btn-block blue lighten-1">Create Customer</a>
+                        </div>
+                        <div class="col s12">
+                            <table class="striped responsive-table">
+                                <thead>
+                                    <tr>
+                                        <th>CUSTOMER</th>
+                                        <th>PHONE</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for customer in customers %}
+                                        <tr>
+                                            <td>
+                                                <a
+                                                        href="{% url 'accounts:customer' customer.id %}"
+                                                >{{ customer.name }}
+                                                </a>
+                                            </td>
+                                            <td>{{ customer.phone }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                          </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- Last 5 Orders -->
+            <div class="col s12 m7">
+                <h4>Last 5 Orders</h4>
+                <hr class="hr-style-two">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="col s12">
+                            <a href="{% url 'accounts:create-order' %}" class="btn btn-block blue lighten-1">Create Order</a>
+                        </div>
+                        <table class="striped responsive-table">
+                            <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Date Ordered</th>
+                                <th>Status</th>
+                                <th>Update</th>
+                                <th>Remove</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                                {% for order in orders %}
+                                    <tr>
+                                        <td>{{ order.product }}</td>
+                                        <td>{{ order.date_created }}</td>
+                                        <td>{{ order.status }}</td>
+                                        <td>
+                                            <a href="{% url 'accounts:update-order' order.id %}" class="btn btn-block orange darken-1">Update</a>
+                                        </td>
+                                        <td>
+                                            <a href="{% url 'accounts:delete-order' order.id %}" class="btn btn-block red darken-4">Remove</a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

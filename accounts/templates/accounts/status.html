@@ -1,0 +1,47 @@
+{% extends "accounts/base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="row">
+            <!--Total Orders-->
+            <div class="col s12 m3">
+                <div class="card teal lighten-4">
+                    <div class="card-content">
+                        <span class="card-title center-align">Total Orders</span>
+                        <divider></divider>
+                        <h2 class="center-align">{{ total_orders }}</h2>
+                    </div>
+                </div>
+            </div>
+            <!--Orders Out for delivery-->
+            <div class="col s12 m3">
+                <div class="card lime lighten-4">
+                    <div class="card-content">
+                        <span class="card-title center-align">O. Out/Delivery</span>
+                        <divider></divider>
+                        <h2 class="center-align">{{ out_for_delivery }}</h2>
+                    </div>
+                </div>
+            </div>
+            <!--Orders Delivered-->
+            <div class="col s12 m3">
+                <div class="card purple lighten-4">
+                    <div class="card-content">
+                        <span class="card-title center-align">Orders Delivered</span>
+                        <divider></divider>
+                        <h2 class="center-align">{{ delivered }}</h2>
+                    </div>
+                </div>
+            </div>
+            <!--Orders Pending-->
+            <div class="col s12 m3">
+                <div class="card cyan lighten-4">
+                    <div class="card-content">
+                        <span class="card-title center-align">Orders Pending</span>
+                        <divider></divider>
+                        <h2 class="center-align">{{ pending }}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}
