@@ -1,5 +1,7 @@
 import time
+
 from django.shortcuts import render, redirect
+from django.forms import inlineformset_factory
 
 from .models import Order, Customer, Product
 from .forms import OrderForm, CustomerForm
@@ -101,18 +103,22 @@ def delete_customer(request, pk):
     return render(request, "accounts/delete_customer.html", context)
 
 
-def create_order(request):
+def create_order(request, pk):
     """Create a new order."""
+    order_form_set = inlineformset_factory(Customer, Order, fields=("product", "status"), extra=3)
+    customer = Customer.objects.get(pk=pk)
+    formset = order_form_set(queryset=Order.objects.none(), instance=customer)
+    # form = OrderForm(initial={"customer": customer})
+
     if request.method == "POST":
-        form = OrderForm(request.POST)
-        if form.is_valid():
-            form.save()
+        formset = order_form_set(request.POST, instance=customer)
+        if formset.is_valid():
+            formset.save()
 
             time.sleep(2)
             return redirect("accounts:index")
-    else:
-        form = OrderForm()
-    context = {"form": form}
+
+    context = {"formset": formset, "customer": customer}
     return render(request, "accounts/order_form.html", context)
 
 

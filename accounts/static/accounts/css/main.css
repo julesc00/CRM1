@@ -1,6 +1,11 @@
 * body {
     background: #eceff1;
 }
+
+.section-footer {
+    margin-top: 0 !important;
+}
+
 .dashboard {
     margin-top: 0;
     margin-bottom: 0;

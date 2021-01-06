@@ -11,8 +11,9 @@
                     <div class="card-content">
                         <span class="card-title">Customer: {{ customer.name }}</span>
                         <div class="card-action">
-                            <a href="{% url 'accounts:update-customer' customer.id %}" class="btn btn-block teal">Update Customer</a>
-                            <a style="margin-top: 10px" href="{% url 'accounts:delete-customer' customer.id %}" class="btn btn-block red darken-3">Delete Customer</a>
+                            <a href="{% url 'accounts:update-customer' customer.id %}" class="btn teal">Update Customer</a>
+                            <a href="{% url 'accounts:create-order' customer.id %}" class="btn blue">Place New Order</a>
+                            <a href="{% url 'accounts:delete-customer' customer.id %}" class="btn red darken-3">Delete Customer</a>
                         </div>
                     </div>
                 </div>
@@ -61,14 +62,14 @@
                     <div class="card-content">
                         <table class="striped responsive-table">
                             <thead>
-                                <tr>
-                                    <th>Product</th>
-                                    <th>Category</th>
-                                    <th>Date Ordered</th>
-                                    <th>Status</th>
-                                    <th>Update</th>
-                                    <th>Remove</th>
-                                </tr>
+                            <tr>
+                                <th>Product</th>
+                                <th>Category</th>
+                                <th>Date Ordered</th>
+                                <th>Status</th>
+                                <th>Update</th>
+                                <th>Remove</th>
+                            </tr>
                             </thead>
                             <tbody>
                             {% for order in orders %}
@@ -77,8 +78,14 @@
                                     <td>{{ order.product.category }}</td>
                                     <td>{{ order.date_created }}</td>
                                     <td>{{ order.status }}</td>
-                                    <td><a href="#" class="btn btn-block orange darken-1">Update</a></td>
-                                    <td><a href="#" class="btn btn-block red darken-4">Remove</a></td>
+                                    <td>
+                                        <a href="{% url 'accounts:update-order' order.id %}"
+                                           class="btn btn-block orange darken-1">Update</a>
+                                    </td>
+                                    <td>
+                                        <a href="{% url 'accounts:delete-order' order.id %}"
+                                           class="btn btn-block red darken-4">Remove</a>
+                                    </td>
                                 </tr>
                             {% endfor %}
                             </tbody>

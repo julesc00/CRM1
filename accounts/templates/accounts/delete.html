@@ -2,22 +2,22 @@
 {% load static %}
 
 {% block content %}
-    <div class="row blue-grey darken-4">
-        <div class="col s4 offset-s4 container">
+    {% include "accounts/navbar.html" %}
+    <div class="row">
+        <div class="col s6">
             <div class="card">
                 <div class="card-content">
-                    <p>Do you really want to delete "{{ order.name }}"</p>
+                    <p>Do you really want to delete "{{ order.product.name }}"</p>
                     <form action="{% url 'accounts:delete-order' order.id %}" method="POST">
                         {% csrf_token %}
-                        <div style="display: flex; flex-direction: row">
+                        <div style="display: flex; flex-direction: row;">
                             <a href="{% url 'accounts:index' %}" class="btn btn-block">Cancel</a>
-                            <input style="margin-left: 10px" class="btn btn-block red darken-4" type="submit" value="Confirm">
+                            <input class="btn btn-block red darken-4 right" type="submit" value="Confirm">
                         </div>
-
                     </form>
                 </div>
             </div>
         </div>
     </div>
-
+    {% include "accounts/footer.html" %}
 {% endblock %}

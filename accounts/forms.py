@@ -19,10 +19,14 @@ class OrderForm(forms.ModelForm):
                 "id": "product",
                 "type": "text"
             }),
-            "status": forms.TextInput(attrs={
+            "status": forms.Select(attrs={
                 "class": "validate",
                 "id": "status",
                 "type": "text"
+            }),
+            "delete": forms.CheckboxInput(attrs={
+                "id": "delete",
+                "type": "radio"
             })
         }
 

@@ -2,8 +2,9 @@
 {% load static %}
 
 {% block content %}
-    <div class="row blue-grey darken-4">
-        <div class="col s4 offset-s4 container">
+    {% include "accounts/navbar.html" %}
+    <div class="row">
+        <div class="col s6">
             <div class="card">
                 <div class="card-content">
                     <p>Do you really want to delete "{{ customer.name }}"</p>
@@ -19,5 +20,5 @@
             </div>
         </div>
     </div>
-
+    {% include "accounts/footer.html" %}
 {% endblock %}
