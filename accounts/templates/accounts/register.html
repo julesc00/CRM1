@@ -31,10 +31,22 @@
                     </div>
 
 
-                    <input style="width: 100%; border-radius: 20px" type="submit" value="Register" class="btn blue btn-block">
+                    <input
+                            style="width: 100%; border-radius: 20px"
+                            type="submit"
+                            value="Register"
+                            class="btn blue btn-block"
+                    >
                 </form>
                 <div class="row">
-                    <span class="white-text center-align">Already registered? <a href="{% url 'accounts:login-page' %}">Login</a></span>
+                    {% for msg in messages %}
+                        <span class="white-text center-align">{{ message }}</span>
+                    {% endfor %}
+                    <span class="red-text text-darken-2 center-align">{{ form.errors }}</span>
+                    <span
+                            class="white-text center-align"
+                    >Already registered? <a href="{% url 'accounts:login-page' %}">Login</a>
+                    </span>
                 </div>
             </div>
         </div>

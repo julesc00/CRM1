@@ -87,3 +87,23 @@ class CreateUserForm(UserCreationForm):
                 "type": "password",
             })
         }
+
+
+class LoginUserForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ["username", "password"]
+
+        widgets = {
+            "username": forms.TextInput(attrs={
+                "class": "validate",
+                "id": "username",
+                "type": "text",
+            }),
+            "password": forms.PasswordInput(attrs={
+                "class": "validate",
+                "id": "password",
+                "type": "password"
+            })
+        }
+

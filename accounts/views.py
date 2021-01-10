@@ -3,7 +3,10 @@ import time
 from django.shortcuts import render, redirect
 from django.forms import inlineformset_factory
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
 from .models import Order, Customer, Product
 from .forms import OrderForm, CustomerForm, CreateUserForm
@@ -17,8 +20,10 @@ def register_page(request):
         form = CreateUserForm(request.POST)
         if form.is_valid():
             form.save()
+            username = form.cleaned_data.get("username")
+            messages.success(request, f"Account was created for {username}")
 
-            return redirect("accounts:index")
+            return redirect("accounts:login-page")
 
     context = {"form": form}
 
@@ -26,10 +31,30 @@ def register_page(request):
 
 
 def login_page(request):
-    context = {}
-    return render(request, "accounts/login.html", context)
+    if request.user.is_authenticated:
+        return redirect("accounts:index")
+    else:
+        if request.method == "POST":
+            form = AuthenticationForm(data=request.POST)
+            if form.is_valid():
+                user = form.get_user()
+                login(request, user)
+                if next in request.POST:
+                    return redirect(request.POST.get("next"))
+                else:
+                    return redirect("accounts:index")
+        else:
+            form = AuthenticationForm()
+        context = {"form": form}
+        return render(request, "accounts/login.html", context)
 
 
+def logout_user(request):
+    logout(request)
+    return redirect("accounts:login-page")
+
+
+@login_required(login_url="accounts:login-page")
 def index(request):
     orders = Order.objects.all()
     orders_list = Order.objects.all()
@@ -65,6 +90,7 @@ def index(request):
     return render(request, "accounts/main.html", context)
 
 
+@login_required(login_url="accounts:login-page")
 def list_products(request):
     products = Product.objects.all()
     context = {
@@ -74,6 +100,7 @@ def list_products(request):
     return render(request, "accounts/products.html", context)
 
 
+@login_required(login_url="accounts:login-page")
 def list_customer(request, pk):
     customer = Customer.objects.get(pk=pk)
     orders = customer.order_set.all()
@@ -92,6 +119,7 @@ def list_customer(request, pk):
     return render(request, "accounts/customer.html", context)
 
 
+@login_required(login_url="accounts:login-page")
 def create_customer(request):
     """Create a new customer."""
     if request.method == "POST":
@@ -110,6 +138,7 @@ def create_customer(request):
     return render(request, "accounts/customer_form.html", context)
 
 
+@login_required(login_url="accounts:login-page")
 def update_customer(request, pk):
     """Update a specific customer."""
     customer = Customer.objects.get(pk=pk)
@@ -129,6 +158,7 @@ def update_customer(request, pk):
     return render(request, "accounts/customer_form.html", context)
 
 
+@login_required(login_url="accounts:login-page")
 def delete_customer(request, pk):
     """Delete a specific customer."""
     customer = Customer.objects.get(pk=pk)
@@ -142,6 +172,7 @@ def delete_customer(request, pk):
     return render(request, "accounts/delete_customer.html", context)
 
 
+@login_required(login_url="accounts:login-page")
 def create_order(request, pk):
     """Create a new order."""
     order_form_set = inlineformset_factory(Customer, Order, fields=("product", "status"), extra=3)
@@ -161,6 +192,7 @@ def create_order(request, pk):
     return render(request, "accounts/order_form.html", context)
 
 
+@login_required(login_url="accounts:login-page")
 def update_order(request, pk):
     """Update an order."""
     order = Order.objects.get(pk=pk)
@@ -180,6 +212,7 @@ def update_order(request, pk):
     return render(request, "accounts/order_form.html", context)
 
 
+@login_required(login_url="accounts:login-page")
 def delete_order(request, pk):
     """Delete a specific order."""
     order = Order.objects.get(pk=pk)

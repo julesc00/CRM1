@@ -20,9 +20,7 @@
         <div class="row">
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="#"><img class="brand-logo right" style="height: 50px; width: auto"
-                                                          src="{% static 'accounts/images/logo.jpg' %}" alt="logo">Store
-                        Manager</a>
+                    <a class="navbar-brand" href="{% url 'accounts:index' %}">Store Manager</a>
                     <button
                             class="navbar-toggler"
                             type="button"
@@ -51,6 +49,8 @@
                         </ul>
                     </div>
                 </div>
+                <span>Hello {{ request.user }} </span>
+                <span><a href="{% url 'accounts:logout' %}">Logout</a></span>
             </nav>
         </div>
     </section>
