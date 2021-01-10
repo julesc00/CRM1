@@ -19,8 +19,6 @@ Z
 *accounts/templates/accounts/dashboard.html,c/f/cfea44fe8c692339e4f9780a7bb66d00d87d6207
 W
 'accounts/templates/accounts/footer.html,b/1/b186210960eef17d1de4c9b557cf80eda8778016
-Z
-*accounts/templates/accounts/customers.html,3/f/3f762b03f50b902cfbe965f2f09b7be802f996eb
 Y
 )accounts/templates/accounts/products.html,a/f/af78fdea531019d592599a85af8fc6aadd424540
 U
@@ -43,3 +41,9 @@ A
 +accounts/templates/accounts/order_form.html,f/9/f90c53a9859cb2aaf16ea6dbd9f7bf7d8ad8d45c
 W
 'accounts/templates/accounts/delete.html,1/0/10dbaabaac96e8c8875091a19ecf3df89e7c5703
+`
+0accounts/templates/accounts/delete_customer.html,9/1/91d68f5e33f507a52a1e5a0776f1b1989c009362
+^
+.accounts/templates/accounts/customer_form.html,b/9/b9ee704e9dd33eead7a175b6fcb7c66224803eb0
+C
+accounts/filters.py,3/8/3841f08a05b82ce12ecf1b7666fa70d46f342b2c

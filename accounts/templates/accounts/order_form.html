@@ -14,11 +14,17 @@
                     {% csrf_token %}
                     {{ formset.management_form }}
                     {% for form in formset %}
+                        <div class="input-field">
                         {{ form.as_p }}
+                        </div>
+
                         <div class="divider"></div>
                     {% endfor %}
+                <div style="margin-top: 15px">
                     <input class="btn blue" type="submit" value="SAVE">
                     <a href="{% url 'accounts:index' %}" class="btn btn-block orange darken-4 right">Cancel</a>
+                </div>
+
                 </form>
             </div>
         </div>

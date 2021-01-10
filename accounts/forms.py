@@ -1,12 +1,14 @@
 from django import forms
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
-from .models import Order, Customer, Product
+from .models import Order, Customer
 
 
 class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
-        fields = ["customer", "product", "status"]
+        fields = "__all__"
 
         widgets = {
             "customer": forms.TextInput(attrs={
@@ -52,5 +54,36 @@ class CustomerForm(forms.ModelForm):
                 "class": "validate",
                 "id": "email",
                 "type": "email"
+            })
+        }
+
+
+class CreateUserForm(UserCreationForm):
+    class Meta:
+        model = User
+        fields = ["username", "email", "password1", "password2"]
+
+        widgets = {
+            "username": forms.TextInput(attrs={
+                "class": "validate",
+                "id": "username",
+                "type": "text",
+                "placeholder": "Enter Username"
+            }),
+            "email": forms.EmailInput(attrs={
+                "class": "validate",
+                "id": "email",
+                "type": "text",
+                "placeholder": "Enter E-mail"
+            }),
+            "password1": forms.PasswordInput(attrs={
+                "class": "validate",
+                "id": "password1",
+                "type": "password",
+            }),
+            "password2": forms.PasswordInput(attrs={
+                "class": "validate",
+                "id": "password2",
+                "type": "password",
             })
         }

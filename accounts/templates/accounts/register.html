@@ -1,0 +1,48 @@
+{% extends "accounts/base.html" %}
+{% load static %}
+
+{% block content %}
+    {% include "accounts/navbar.html" %}
+    <div class="container">
+    <div class="row">
+        <div class="col s6">
+            <div class="card blue-grey darken-4" style="border-radius: 15px">
+        <div class="card-content">
+            <h1 class="blue-text text-lighten-3">Register with us</h1>
+        <div class="row">
+            <div class="col s12">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <div class="input-field col s6">
+                        <i class="blue-text text-lighten-3 material-icons prefix">account_circle</i>
+                        {{ form.username }}
+                    </div>
+                    <div class="input-field col s6">
+                        <i class="blue-text text-lighten-3 material-icons prefix">email</i>
+                        {{ form.email }}
+                    </div>
+                    <div class="input-field col s6">
+                        <i class="blue-text text-lighten-3 material-icons prefix">lock</i>
+                        {{ form.password1 }}
+                    </div>
+                    <div class="input-field col s6">
+                        <i class="blue-text text-lighten-3 material-icons prefix">lock</i>
+                        {{ form.password2 }}
+                    </div>
+
+
+                    <input style="width: 100%; border-radius: 20px" type="submit" value="Register" class="btn blue btn-block">
+                </form>
+                <div class="row">
+                    <span class="white-text center-align">Already registered? <a href="{% url 'accounts:login-page' %}">Login</a></span>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+        </div>
+    </div>
+    </div>
+    {% include "accounts/footer.html" %}
+
+{% endblock %}

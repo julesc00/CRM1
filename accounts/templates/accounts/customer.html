@@ -43,18 +43,17 @@
             <div class="col s12">
                 <div class="card searchbar">
                     <div class="card-content">
-                        <form action="">
+                        <form action="" method="GET">
                             {% csrf_token %}
-                            <button>Search</button>
-                            <div class="input-field">
-                                <input type="search" id="search" required>
-                                <label for="search" class="label-icon"><i class="material-icons">search</i></label>
-                            </div>
+                            {{ customer_filter.form }}
+                            <button class="btn btn-block">Search</button>
+
                         </form>
                     </div>
                 </div>
             </div>
         </div>
+
         <!-- Details section -->
         <div class="row">
             <div class="col s12">
@@ -64,7 +63,7 @@
                             <thead>
                             <tr>
                                 <th>Product</th>
-                                <th>Category</th>
+                                <th>Note</th>
                                 <th>Date Ordered</th>
                                 <th>Status</th>
                                 <th>Update</th>
@@ -75,7 +74,7 @@
                             {% for order in orders %}
                                 <tr>
                                     <td>{{ order.product }}</td>
-                                    <td>{{ order.product.category }}</td>
+                                    <td>{{ order.note }}</td>
                                     <td>{{ order.date_created }}</td>
                                     <td>{{ order.status }}</td>
                                     <td>

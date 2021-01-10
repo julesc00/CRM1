@@ -12,7 +12,10 @@
                 </span>
                 <form action="" method="POST">
                     {% csrf_token %}
-                    {{ form.as_p }}
+                    <div class="input-field col s12">
+                        {{ form.as_p }}
+                    </div>
+
                     <input class="btn blue" type="submit" value="SAVE">
                     <a href="{% url 'accounts:index' %}" class="btn btn-block orange darken-4 right">Cancel</a>
                 </form>
