@@ -16,10 +16,12 @@
                     <div class="input-field col s6">
                         <i class="blue-text text-lighten-3 material-icons prefix">account_circle</i>
                         {{ form.username }}
+                        <label for="username" id="username">Username</label>
                     </div>
                     <div class="input-field col s6">
                         <i class="blue-text text-lighten-3 material-icons prefix">lock</i>
                         {{ form.password }}
+                        <label for="password" id="password">Password</label>
                     </div>
 
                     <input
@@ -35,7 +37,8 @@
                     {% endfor %}
                     <span
                             class="white-text center-align"
-                    >Not registered? <a href="{% url 'accounts:register-page' %}">Register</a>
+                            style="margin-top: 10px"
+                    >Not registered? <a class="blue-text text-lighten-3" href="{% url 'accounts:register-page' %}">Register</a>
                     </span>
                 </div>
             </div>

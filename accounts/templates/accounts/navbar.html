@@ -49,7 +49,7 @@
                         </ul>
                     </div>
                 </div>
-                <span>Hello {{ request.user }} </span>
+                <span>Hello {{ request.user|title }} </span>
                 <span><a href="{% url 'accounts:logout' %}">Logout</a></span>
             </nav>
         </div>

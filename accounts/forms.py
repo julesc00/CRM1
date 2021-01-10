@@ -68,13 +68,11 @@ class CreateUserForm(UserCreationForm):
                 "class": "validate",
                 "id": "username",
                 "type": "text",
-                "placeholder": "Enter Username"
             }),
             "email": forms.EmailInput(attrs={
                 "class": "validate",
                 "id": "email",
                 "type": "text",
-                "placeholder": "Enter E-mail"
             }),
             "password1": forms.PasswordInput(attrs={
                 "class": "validate",
