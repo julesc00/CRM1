@@ -27,6 +27,7 @@ def register_page(request):
 
             group = Group.objects.get(name="customer")
             user.groups.add(group)
+            Customer.objects.create(user=user)
 
             messages.success(request, f"Account was created for {username}")
 
@@ -48,7 +49,7 @@ def login_page(request):
             if next in request.POST:
                 return redirect(request.POST.get("next"))
             else:
-                return redirect("accounts:index")
+                return redirect("accounts:user-page")
     else:
         form = AuthenticationForm()
     context = {"form": form}
@@ -61,7 +62,7 @@ def logout_user(request):
 
 
 @login_required(login_url="accounts:login-page")
-# @allowed_users(allowed_roles=["admin"])
+@allowed_users(allowed_roles=["admin"])
 def index(request):
     orders = Order.objects.all()
     orders_list = Order.objects.all()

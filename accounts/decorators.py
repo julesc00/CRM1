@@ -29,7 +29,7 @@ def allowed_users(allowed_roles=[]):
 
 
 def admin_only(view_func):
-    """Quick fix, not for production mode."""
+    """Quick fix, not for production mode, rather use Django Signals."""
     def wrapper_function(request, *args, **kwargs):
         group = None
         if request.user.groups.exists():
@@ -40,7 +40,5 @@ def admin_only(view_func):
 
         if group == "admin":
             return view_func(request, *args, **kwargs)
-        else:
-            return HttpResponse("You're not admin.")
 
     return wrapper_function
