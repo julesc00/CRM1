@@ -47,3 +47,13 @@ W
 .accounts/templates/accounts/customer_form.html,b/9/b9ee704e9dd33eead7a175b6fcb7c66224803eb0
 C
 accounts/filters.py,3/8/3841f08a05b82ce12ecf1b7666fa70d46f342b2c
+V
+&accounts/templates/accounts/login.html,2/e/2efb935804e73168608511b9e54627f2f98d0b0f
+Y
+)accounts/templates/accounts/register.html,6/3/6321c42c63a1eeddbc8ad22628b36962c1bd004b
+U
+%accounts/templates/accounts/user.html,e/7/e7f019b2dacf229e1516afc5c41295972bab35ee
+F
+accounts/decorators.py,c/8/c8921ffe21d9ae7904f234c7d677370d5ea8e0bd
+\
+,accounts/templates/accounts/user_status.html,d/1/d1218c810100a2063c4dcdb2acaf4a0b99cc753b
