@@ -1,0 +1,12 @@
+
+TWeb:TableWithoutCaptionCheck
+" Add a description to this table.(©Ñ»ûÿÿÿÿ8µ¯ğñ.
+s Web:TableHeaderHasIdOrScopeCheck";Add either an 'id' or a 'scope' attribute to this <th> tag.(Ùê¤øÿÿÿÿ8µ¯ğñ.
+n Web:TableHeaderHasIdOrScopeCheck";Add either an 'id' or a 'scope' attribute to this <th> tag.(ÕÌƒÆ8µ¯ğñ.
+n Web:TableHeaderHasIdOrScopeCheck";Add either an 'id' or a 'scope' attribute to this <th> tag.(¶õÛ—8µ¯ğñ.
+s Web:TableHeaderHasIdOrScopeCheck";Add either an 'id' or a 'scope' attribute to this <th> tag.(¿Ÿ‚şÿÿÿÿ8µ¯ğñ.
+n Web:TableHeaderHasIdOrScopeCheck";Add either an 'id' or a 'scope' attribute to this <th> tag.(ŸÔÛ 8µ¯ğñ.
+OWeb:BoldAndItalicTagsCheck+"Replace this <i> tag by <em>.(ç»ÉŞıÿÿÿÿ8µ¯ğñ.
+OWeb:BoldAndItalicTagsCheck-"Replace this <i> tag by <em>.(Ö’²çùÿÿÿÿ8µ¯ğñ.
+OWeb:BoldAndItalicTagsCheck7"Replace this <i> tag by <em>.(ãº£¹ùÿÿÿÿ8µ¯ğñ.
+OWeb:BoldAndItalicTagsCheck9"Replace this <i> tag by <em>.(¬›Öòùÿÿÿÿ8µ¯ğñ.

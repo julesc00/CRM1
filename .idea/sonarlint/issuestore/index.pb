@@ -57,3 +57,7 @@ F
 accounts/decorators.py,c/8/c8921ffe21d9ae7904f234c7d677370d5ea8e0bd
 \
 ,accounts/templates/accounts/user_status.html,d/1/d1218c810100a2063c4dcdb2acaf4a0b99cc753b
+\
+,accounts/templates/accounts/user_orders.html,d/e/de7eb3f08aa07632c2073436a88cd94fe03dc392
+^
+.accounts/templates/accounts/user_settings.html,d/d/dd789edb4709b674ad283e345bd93c38e2b5397c

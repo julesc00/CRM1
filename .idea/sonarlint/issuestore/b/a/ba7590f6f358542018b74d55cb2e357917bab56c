@@ -1,4 +1,4 @@
 
-Cpython:S125Ê"Remove this commented out code.(ˆàšÔşÿÿÿÿ8ÙÆƒ¨í.
-mpython:S11923"ODefine a constant instead of duplicating this literal "accounts:index" 6 times.(›“î48ß”‘îî.
-Ipython:S1481g"*Remove the unused local variable "orders".(Äãçã8ËĞı‰ñ.
+Cpython:S125Û"Remove this commented out code.(ˆàšÔşÿÿÿÿ8ÙÆƒ¨í.
+npython:S1192¦"ODefine a constant instead of duplicating this literal "accounts:index" 5 times.(›“î48ß”‘îî.
+Ppython:S1481y",Remove the unused local variable "customer".(‘ªÊşÿÿÿÿ8›ş‚ñ.

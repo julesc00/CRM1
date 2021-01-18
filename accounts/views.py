@@ -117,6 +117,10 @@ def user_page(request):
     return render(request, "accounts/user.html", context)
 
 
+def user_settings(request, pk):
+    customer = Customer.objects.get(pk=pk)
+
+
 @login_required(login_url="accounts:login-page")
 @allowed_users(allowed_roles=["admin"])
 def list_products(request):

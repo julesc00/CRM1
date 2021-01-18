@@ -7,6 +7,7 @@ class Customer(models.Model):
     name = models.CharField(max_length=200, null=True, blank=True)
     phone = models.CharField(max_length=100, null=True, blank=True)
     email = models.EmailField(max_length=200, null=True, blank=True, unique=True)
+    profile_pic = models.ImageField(null=True, blank=True)
     date_created = models.DateTimeField(auto_now_add=True)
 
     def clean(self):
