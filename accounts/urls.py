@@ -11,6 +11,7 @@ urlpatterns = [
 
     path('', views.index, name="index"),
     path('user/', views.user_page, name="user-page"),
+    path('user_settings/', views.user_settings, name="user-settings"),
 
     path('customer/<str:pk>/', views.list_customer, name="customer"),
     path('create_customer', views.create_customer, name="create-customer"),

@@ -1,2 +1,52 @@
 {% extends "accounts/base.html" %}
 {% load static %}
+
+{% block content %}
+    <style>
+        .profile_pic {
+            max-width: 200px;
+            max-height: 200px;
+            margin: 0 auto;
+            border-radius: 50%;
+        }
+    </style>
+
+    <div class="row">
+    <div class="col s12 m3">
+        <div class="card">
+            <div class="card-content">
+                <a
+                        href="{% url 'accounts:user-page' %}"
+                        class="btn btn-block"
+                        style="margin-bottom: 15px"
+                >
+                    <i class="material-icons">arrow_back</i>
+                </a>
+                <div class="divider"></div>
+                <span class="card-title">Account Settings</span>
+                <div style="border-radius: 10%; overflow: hidden">
+                    <img
+                        class="responsive-img"
+                        src="{{ request.user.customer.profile_pic.url }}"
+                        alt="" class="profile-pic"
+                >
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="col s12 m9">
+        <div class="card">
+            <div class="card-content">
+                <form action="{% url 'accounts:user-settings' %}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                        <div class="input-field col s12">
+                            {{ form.as_p }}
+                        </div>
+                    <input type="submit" value="Update Information" class="btn btn-primary">
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}

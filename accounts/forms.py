@@ -37,6 +37,7 @@ class CustomerForm(forms.ModelForm):
     class Meta:
         model = Customer
         fields = "__all__"
+        exclude = ["user"]
 
         widgets = {
             "name": forms.TextInput(attrs={

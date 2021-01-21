@@ -117,8 +117,22 @@ def user_page(request):
     return render(request, "accounts/user.html", context)
 
 
-def user_settings(request, pk):
-    customer = Customer.objects.get(pk=pk)
+@login_required(login_url="accounts:login-page")
+@allowed_users(allowed_roles="customer")
+def user_settings(request):
+    customer = request.user.customer
+    form = CustomerForm(instance=customer)
+    if request.method == "POST":
+        form = CustomerForm(request.POST, request.FILES, instance=customer)
+        if form.is_valid():
+            form.save()
+
+            return redirect("accounts:user-settings")
+    context = {
+        "form": form
+    }
+
+    return render(request, "accounts/user_settings.html", context)
 
 
 @login_required(login_url="accounts:login-page")
