@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block content %}
+    {% include "accounts/navbar.html" %}
     <style>
         .profile_pic {
             max-width: 200px;
@@ -38,15 +39,22 @@
     <div class="col s12 m9">
         <div class="card">
             <div class="card-content">
-                <form action="{% url 'accounts:user-settings' %}" method="POST" enctype="multipart/form-data">
+                <form action="{% url 'accounts:user-settings' %}"
+                      method="POST"
+                      enctype="multipart/form-data">
                     {% csrf_token %}
                         <div class="input-field col s12">
                             {{ form.as_p }}
                         </div>
-                    <input type="submit" value="Update Information" class="btn btn-primary">
+                    <input
+                            type="submit"
+                            value="Update Information"
+                            class="btn btn-primary"
+                    >
                 </form>
             </div>
         </div>
     </div>
     </div>
+    {% include "accounts/footer.html" %}
 {% endblock %}
